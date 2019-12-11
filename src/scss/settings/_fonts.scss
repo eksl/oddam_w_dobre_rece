@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "merriweatherregular";
+  src: url("../../assets/fonts/merriweather-regular-webfont.woff2")
+      format("woff2"),
+    url("../../assets/fonts/merriweather-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "open_sansregular";
+  src: url("../../assets/fonts/opensans-regular-webfont.woff2") format("woff2"),
+    url("../../assets/fonts/opensans-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font-base: "Open Sans";
+$font-alt: "Merriweather";

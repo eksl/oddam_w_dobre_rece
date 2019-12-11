@@ -1,0 +1,40 @@
+.home-header {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 9rem;
+
+  .login-buttons {
+    font-size: 1rem;
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      li {
+        padding: 0.5rem;
+        &:last-of-type {
+          border: 1px solid $color-yellow;
+          margin-left: 0.625rem;
+        }
+        .navlink {
+          color: $color-grey;
+        }
+      }
+    }
+  }
+
+  .menu {
+    font-size: 1.25rem;
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+      li {
+        margin: 0 0.5rem;
+        padding: 0 1rem;
+        &:last-of-type {
+          margin-right: 0;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
