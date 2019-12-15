@@ -14,12 +14,12 @@ class HomeHeader extends Component {
         <div className="login-buttons">
           <ul>
             <li>
-              <NavLink class="navlink" to="/logowanie">
+              <NavLink className="navlink" to="/logowanie">
                 Zaloguj
               </NavLink>
             </li>
             <li>
-              <NavLink class="navlink" to="/rejestracja">
+              <NavLink className="navlink" to="/rejestracja">
                 Załóż konto
               </NavLink>
             </li>

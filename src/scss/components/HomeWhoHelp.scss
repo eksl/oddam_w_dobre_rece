@@ -1,0 +1,75 @@
+.home-who-help {
+  color: $color-dark-brown;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .head {
+    margin: 4rem;
+    text-align: center;
+    width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .head__header {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .head__organizations {
+      margin-top: 1rem;
+
+      display: flex;
+
+      .head__organization {
+        font-size: 2rem;
+        margin: 1rem 2rem;
+        padding: 0.25rem 3rem;
+        text-align: center;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:first-of-type {
+          border: 1px solid $color-dark-brown;
+        }
+
+        .navlink {
+          color: $color-dark-brown;
+        }
+      }
+    }
+    .head__description {
+      font-size: 1.5rem;
+      margin-top: 2.5rem;
+    }
+  }
+
+  .item {
+    border-bottom: 1px solid $color-dark-brown;
+    padding: 1rem 0 2rem 0;
+    width: 70%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .wrapper {
+      .item__header {
+        font-size: 1.5rem;
+        padding: 0.5rem 0;
+      }
+
+      .item__description {
+      }
+    }
+  }
+
+  .item--no-border {
+    border: none;
+  }
+}
