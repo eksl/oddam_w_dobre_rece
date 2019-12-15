@@ -30,13 +30,13 @@
       ul {
         display: flex;
         li {
-          border: 1px solid $color-black;
+          border: 1px solid $color-dark-brown;
           font-size: 2rem;
           margin: 1rem 2rem;
-          padding: 3rem 6rem;
+          padding: 1rem 6rem;
           text-align: center;
           .navlink {
-            color: $color-black;
+            color: $color-dark-brown;
             text-transform: uppercase;
             span {
               display: block;

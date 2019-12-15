@@ -1,0 +1,64 @@
+.home-four-steps {
+  color: $color-dark-brown;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .head {
+    padding: 1rem;
+
+    .head__title {
+      font-size: 2.25rem;
+      margin: 2rem;
+      text-align: center;
+    }
+    .decoration {
+      margin: 0 auto;
+    }
+  }
+  .steps {
+    background-color: $color-light-grey;
+    padding: 2rem 4rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    .step {
+      margin: 3rem;
+      width: 10rem;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .step__icon {
+        margin-bottom: 1rem;
+      }
+      .step__title {
+        margin-bottom: 0.75rem;
+        text-align: center;
+      }
+      .dash {
+        border: 1px solid $color-grey;
+        width: 5rem;
+        margin-bottom: 0.75rem;
+      }
+      .step__subtitle {
+        text-align: center;
+      }
+    }
+  }
+  .navlink {
+    border: 1px solid $color-dark-brown;
+    font-size: 2rem;
+    margin: 2rem 2rem 4rem 2rem;
+    padding: 1rem 6rem;
+    text-align: center;
+
+    color: $color-dark-brown;
+    text-transform: uppercase;
+    span {
+      display: block;
+    }
+  }
+}
