@@ -56,21 +56,35 @@ class HomeWhoHelp extends Component {
     //     tags: "ubrania, jedzenie, ciepłe koce"
     //   }
     // ],
-    items: [],
+    data: null,
     currentPage: 1,
     itemsPerPage: 3,
-    category: 1
+    category: 0
   };
 
   componentDidMount() {
     const url = "http://localhost:4000/fundations";
-    fetch(url)
-      .then(response => response.json())
-      .then(items => this.setState({ items }));
+    return fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Blad sieci");
+        }
+      })
+      .then(data => {
+        this.setState({ data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   handleCategoryChange = event => {
-    this.setState({ category: Number(event.target.dataset.category) });
+    this.setState({
+      category: Number(event.target.dataset.category),
+      currentPage: 1
+    });
   };
 
   handleClick = event => {
@@ -80,93 +94,94 @@ class HomeWhoHelp extends Component {
   };
 
   render() {
-    // const url = "http://localhost:4000";
-    // $.ajax({
-    //   method: "GET",
-    //   url: url + "/db",
-    //   dataType: "json"
-    // }).done(function(response) {
-    //   console.log(response);
-    // });
+    const { data, currentPage, itemsPerPage } = this.state;
 
-    const { items, currentPage, itemsPerPage } = this.state;
+    if (this.state.data == null) {
+      return <div>Loading...</div>;
+    } else {
+      const dataDesc = data.map(item => {
+        return item.desc;
+      });
 
-    // Logic for displaying current items
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+      const curr = data.slice();
+      const sialala = curr[this.state.category].items.slice();
+      console.log(sialala);
 
-    const renderItems = currentItems.map((item, index) => {
-      return (
-        <div className="item" key={index}>
-          <div className="wrapper">
-            <h4 className="item__header">{item.items[index].title}</h4>
-            <p className="item__description">{item.items[index].description}</p>
+      // Logic for displaying current items
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+      const currentItems = sialala.slice(indexOfFirstItem, indexOfLastItem);
+
+      console.log("currentItems: ", currentItems);
+
+      const renderItems = currentItems.map((item, index) => {
+        return (
+          <div className="item" key={index}>
+            <div className="wrapper">
+              <h4 className="item__header">{item.title}</h4>
+              <p className="item__description">{item.description}</p>
+            </div>
+            <p className="item__tags">{item.tags}</p>
           </div>
-          <p className="item__tags">{item.items[index].tags}</p>
-        </div>
-      );
-    });
+        );
+      });
 
-    // Logic for displaying page numbers
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(items.length / itemsPerPage); i++) {
-      pageNumbers.push(i);
-    }
+      // Logic for displaying page numbers
+      const pageNumbers = [];
+      for (let i = 1; i <= Math.ceil(sialala.length / itemsPerPage); i++) {
+        pageNumbers.push(i);
+      }
 
-    const renderPageNumbers = pageNumbers.map(number => {
+      const renderPageNumbers = pageNumbers.map(number => {
+        return (
+          <button
+            className="pagination"
+            key={number}
+            id={number}
+            onClick={this.handleClick}
+          >
+            {number}
+          </button>
+        );
+      });
+
       return (
-        <button
-          className="pagination"
-          key={number}
-          id={number}
-          onClick={this.handleClick}
-        >
-          {number}
-        </button>
-      );
-    });
+        <div className="home-who-help" id="organizations">
+          <div className="head">
+            <h2 className="head__header">Komu pomagamy?</h2>
+            <div className="decoration"></div>
+            <ul className="head__organizations">
+              <li
+                className="head__organization"
+                data-category="0"
+                onClick={this.handleCategoryChange}
+              >
+                Fundacjom
+              </li>
+              <li
+                className="head__organization"
+                data-category="1"
+                onClick={this.handleCategoryChange}
+              >
+                Organizacjom pozarządowym
+              </li>
+              <li
+                className="head__organization"
+                data-category="2"
+                onClick={this.handleCategoryChange}
+              >
+                Lokalnym zbiórkom
+              </li>
+            </ul>
 
-    return (
-      <div className="home-who-help" id="organizations">
-        <div className="head">
-          <h2 className="head__header">Komu pomagamy?</h2>
-          <div className="decoration"></div>
-          <ul className="head__organizations">
-            <li
-              className="head__organization"
-              data-category="0"
-              onClick={this.handleCategoryChange}
-            >
-              Fundacjom
-            </li>
-            <li
-              className="head__organization"
-              data-category="1"
-              onClick={this.handleCategoryChange}
-            >
-              Organizacjom pozarządowym
-            </li>
-            <li
-              className="head__organization"
-              data-category="2"
-              onClick={this.handleCategoryChange}
-            >
-              Lokalnym zbiórkom
-            </li>
-          </ul>
+            <p className="head__description">{dataDesc[this.state.category]}</p>
+          </div>
 
-          <p className="head__description">
-            W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi
-            współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i
-            czego potrzebują.
-          </p>
+          {renderItems}
+          <div className="pagination">{renderPageNumbers}</div>
         </div>
-
-        {renderItems}
-        <div className="pagination">{renderPageNumbers}</div>
-      </div>
-    );
+      );
+    }
   }
 }
 
