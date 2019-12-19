@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class HomeContact extends Component {
   state = {
-    data: null,
     name: "",
     email: "",
     message: "",
@@ -26,6 +25,34 @@ class HomeContact extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+
+    const dataToSend = {
+      name: this.state.name,
+      email: this.state.email,
+      message: this.state.message
+    };
+
+    console.log(dataToSend);
+
+    const url = "https://fer-api.coderslab.pl/v1/portfolio/contact";
+
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(dataToSend)
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Blad sieci");
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
     // this.setState({ errorMessage: "" });
 
