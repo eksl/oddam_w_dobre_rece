@@ -88,6 +88,7 @@ class HomeWhoHelp extends Component {
   };
 
   handleClick = event => {
+    console.log("Event: ", event);
     this.setState({
       currentPage: Number(event.target.id)
     });
@@ -114,16 +115,28 @@ class HomeWhoHelp extends Component {
 
       console.log("currentItems: ", currentItems);
 
-      const renderItems = currentItems.map((item, index) => {
-        return (
-          <div className="item" key={index}>
-            <div className="wrapper">
-              <h4 className="item__header">{item.title}</h4>
-              <p className="item__description">{item.description}</p>
+      const renderItems = currentItems.map((item, index, arr) => {
+        if (index < arr.length - 1) {
+          return (
+            <div className="item" key={index}>
+              <div className="wrapper">
+                <h4 className="item__header">{item.title}</h4>
+                <p className="item__description">{item.description}</p>
+              </div>
+              <p className="item__tags">{item.tags}</p>
             </div>
-            <p className="item__tags">{item.tags}</p>
-          </div>
-        );
+          );
+        } else {
+          return (
+            <div className="item item--no-border" key={index}>
+              <div className="wrapper">
+                <h4 className="item__header">{item.title}</h4>
+                <p className="item__description">{item.description}</p>
+              </div>
+              <p className="item__tags">{item.tags}</p>
+            </div>
+          );
+        }
       });
 
       // Logic for displaying page numbers
@@ -135,7 +148,7 @@ class HomeWhoHelp extends Component {
       const renderPageNumbers = pageNumbers.map(number => {
         return (
           <button
-            className="pagination"
+            className="pagination__button"
             key={number}
             id={number}
             onClick={this.handleClick}
