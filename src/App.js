@@ -1,9 +1,9 @@
 import React from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
-import Login from "./components/login/Login";
-import Register from "./components/login/Register";
-import Logout from "./components/login/Logout";
+import Login from "./components/LogUser/Login";
+import Register from "./components/LogUser/Register";
+import Logout from "./components/LogUser/Logout";
 
 function App() {
   return (

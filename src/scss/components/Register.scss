@@ -1,0 +1,56 @@
+.login {
+  .menu {
+    ul {
+      li {
+        &:first-of-type {
+          border: none;
+        }
+      }
+    }
+  }
+
+  .login-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__header {
+      font-size: 3rem;
+    }
+    &__panel {
+      color: $color-grey;
+      background-color: $color-light-grey;
+      margin-top: 2rem;
+      padding: 2rem 6rem;
+
+      display: flex;
+      flex-direction: column;
+      label {
+        margin-bottom: 1rem;
+      }
+      input {
+        background: none;
+        border: none;
+        border-bottom: 1px solid $color-grey;
+        margin-bottom: 2rem;
+      }
+    }
+    &__buttons {
+      width: 35rem;
+
+      display: flex;
+      justify-content: space-between;
+      button {
+        background: none;
+        border: none;
+        margin-top: 2rem;
+        padding: 13px;
+      }
+
+      .button--border {
+        border: 1px solid $color-grey;
+      }
+    }
+  }
+}

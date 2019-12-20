@@ -1,5 +1,5 @@
 .home-contact {
-  //   background-image: url("../../assets/img/Background-Contact-Form.jpg");
+  color: $color-dark-brown;
   height: 950px;
   margin: 5rem 0 -1.5rem 0;
   position: relative;
@@ -31,7 +31,14 @@
     align-items: center;
     align-content: center;
 
+    .header {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
     .contact-form {
+      margin-top: 3rem;
+
       display: flex;
       flex-direction: column;
       .contact-form__heading {
@@ -40,20 +47,40 @@
 
         .contact-form__item {
           input {
-            width: 100%;
+            background: none;
+            border: none;
+            border-bottom: 1px solid $color-grey;
+            margin-top: 1rem;
+            padding-bottom: 0.25rem;
+            width: 90%;
           }
         }
       }
 
       .contact-form__message {
+        margin-top: 2rem;
+
         display: flex;
         flex-direction: column;
+        textarea {
+          background: none;
+          border: none;
+          border-bottom: 1px solid $color-grey;
+          height: 4rem;
+          margin-top: 1rem;
+          overflow: hidden;
+          padding-bottom: 0.25rem;
+        }
       }
 
       .contact-form__button {
         align-self: flex-end;
-        height: 1rem;
-        width: 5rem;
+        background: none;
+        border: 1px solid $color-grey;
+        height: 3rem;
+        margin-top: 2rem;
+        padding: 0;
+        width: 7rem;
       }
     }
   }
