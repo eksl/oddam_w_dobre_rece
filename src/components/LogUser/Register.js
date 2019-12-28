@@ -51,21 +51,23 @@ class Register extends Component {
         errorPwdMessage: "Podane hasło jest za krótkie!"
       }));
     }
-    if (pwd === pwd2) {
-      isPasswordOk = false;
+    if (pwd !== pwd2) {
+      isPassword2Ok = false;
       this.setState(state => ({
         errorPwd2Message: "Podane hasła różnią się!"
       }));
     }
-    if (isEmailOk && isPasswordOk) {
+    if (isEmailOk && isPasswordOk && isPassword2Ok) {
       console.log("Hurra!!!");
       console.log("email:", isEmailOk);
       console.log("pwd:", isPasswordOk);
+      console.log("pwd2:", isPassword2Ok);
       return true;
     } else {
       console.log("Smuteczek :(");
       console.log("email:", isEmailOk);
       console.log("pwd:", isPasswordOk);
+      console.log("pwd2:", isPassword2Ok);
       return false;
     }
   };
