@@ -2,6 +2,8 @@
 
 It's a website, where user can can give unnecessary items to trusted institutions.
 
+[Link to website](https://amazing-hoover-607670.netlify.com)
+
 ## Technologies
 App was created with React, React Router and Sass.
 
