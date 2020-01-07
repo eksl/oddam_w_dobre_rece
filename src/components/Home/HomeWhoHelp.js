@@ -63,7 +63,8 @@ class HomeWhoHelp extends Component {
   };
 
   componentDidMount() {
-    const url = "http://localhost:4000/fundations";
+    // const url = "http://localhost:4000/fundations";
+    const url = "https://api.jsonbin.io/b/5e13f6405df640720830f577";
     return fetch(url)
       .then(response => {
         if (response.ok) {
